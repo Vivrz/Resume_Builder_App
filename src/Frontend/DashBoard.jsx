@@ -3,7 +3,7 @@ import React from "react";
 const Dashboard = () => {
   return (
     <div style={{ margin: 0, padding: 0, fontFamily: "Arial, sans-serif" }}>
-      {/* Navigation Bar */}
+      {/* NavBar ka style section */}
       <div
         style={{
           display: "flex",
@@ -21,7 +21,7 @@ const Dashboard = () => {
         <button style={navButtonStyle}>Login</button>
       </div>
 
-      {/* Main Section */}
+      
       <div
       
         style={{
@@ -41,8 +41,10 @@ const Dashboard = () => {
         </h1>
         <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
          
+
         </h1>
         <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
+       
        
         </h1>
         
@@ -83,7 +85,7 @@ const Dashboard = () => {
   );
 };
 
-// Button Style
+// Button kaa style section
 const navButtonStyle = {
   padding: "10px 15px",
   backgroundColor: "#003f7f",
