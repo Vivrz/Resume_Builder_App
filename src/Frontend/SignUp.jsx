@@ -1,10 +1,10 @@
 import React from "react";
-import "./LoginPage.css"; 
-import { Link } from "react-router-dom";
-const LoginPage = () => {
+import "./SignUp.css";
+
+const SignUpPage = () => {
   return (
     <div
-  className="login-container"
+  className="signup-container"
   style={{
     margin: 0,
     fontFamily: "Arial, sans-serif",
@@ -16,10 +16,9 @@ const LoginPage = () => {
     height: "100vh",
   }}
 >
-      <div className="login-box">
+      <div className="sign-box">
         <h1 className="logo">SHIVAY</h1>
-        <h2 className="welcome-text">Welcome to My SHIVAY AI Resume Builder</h2>
-
+        
         <div className="social-login">
           <button className="social-button linkedin">Linkedin</button>
           <button className="social-button google">GOOGLE</button>
@@ -30,25 +29,23 @@ const LoginPage = () => {
         </div>
 
         <form>
+          <input type="text" placeholder="Full name" className="input-field"/>
+          <input type="tel" pattern="[0-9]+" title="Please enter a valid positive number" required placeholder="Contact Number" className="input-field" />
           <input type="email" placeholder="Your email" className="input-field" />
           <input type="password" placeholder="Your password" className="input-field" />
-          <a href="#" className="forgot-password">
-            Forgot your password?
-          </a>
+          <input type="password" placeholder=" Confirm Your password" className="input-field" />
+          
           <button type="submit" className="sign-in-button">
-            SIGN IN
+            Submit
           </button>
         </form>
 
-        <div className="signup-link">
-          Don't have an account? <Link to="/SignUp" >
-          Sign Up
-        </Link>
-        </div>
         
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
+
+
