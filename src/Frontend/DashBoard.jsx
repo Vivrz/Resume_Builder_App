@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -18,7 +19,10 @@ const Dashboard = () => {
           <button style={navButtonStyle}>Home</button>
           <button style={navButtonStyle}>About us</button>
         </div>
-        <button style={navButtonStyle}>Login</button>
+        <Link to="/login" style={navButtonStyle}>
+          Login
+        </Link>
+
       </div>
 
       

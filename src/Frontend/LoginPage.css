@@ -1,13 +1,4 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1a1a2e;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+
   
   .login-container {
     display: flex;
@@ -117,4 +108,4 @@ body {
     color: #5a8dee;
     text-decoration: none;
   }
-  
+   

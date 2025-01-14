@@ -3,13 +3,25 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
   return (
-    <div className="login-container">
+    <div
+  className="login-container"
+  style={{
+    margin: 0,
+    fontFamily: "Arial, sans-serif",
+    backgroundColor: "#1a1a2e",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+  }}
+>
       <div className="login-box">
         <h1 className="logo">SHIVAY</h1>
         <h2 className="welcome-text">Welcome to My SHIVAY AI Resume Builder</h2>
 
         <div className="social-login">
-          <button className="social-button facebook">FACEBOOK</button>
+          <button className="social-button linkedin">Linkedin</button>
           <button className="social-button google">GOOGLE</button>
         </div>
 
