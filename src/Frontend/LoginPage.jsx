@@ -8,7 +8,7 @@ const LoginPage = () => {
   style={{
     margin: 0,
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#1a1a2e",
+    backgroundColor: "#121829",
     color: "#fff",
     display: "flex",
     justifyContent: "center",

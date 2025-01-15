@@ -15,6 +15,8 @@
     height: 600px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    
+    
   }
   
   .logo {
@@ -43,13 +45,13 @@
     cursor: pointer;
   }
   
-  .facebook {
-    background-color: #3b5998;
+  .linkedin {
+    background-color: #3B82F6;
     color: white;
   }
   
   .google {
-    background-color: #db4437;
+    background-color: #FF416C;
     color: white;
   }
   
@@ -93,7 +95,7 @@
     margin-top: 1rem;
     border: none;
     border-radius: 5px;
-    background-color: #5a8dee;
+    background-color: #3B82F6;
     color: white;
     font-weight: bold;
     cursor: pointer;

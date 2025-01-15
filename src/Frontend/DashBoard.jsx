@@ -19,7 +19,7 @@ const Dashboard = () => {
           <button style={navButtonStyle}>Home</button>
           <button style={navButtonStyle}>About us</button>
         </div>
-        <Link to="/login" style={navButtonStyle}>
+        <Link to="/Login" style={navButtonStyle}>
           Login
         </Link>
 
@@ -51,7 +51,7 @@ const Dashboard = () => {
        
        
         </h1>
-        
+      <div> 
         <button
           style={{
             padding: "15px 30px",
@@ -64,8 +64,11 @@ const Dashboard = () => {
             marginBottom: "30px",
           }}
         >
-          Create Your Resume
+          <Link to={"/PersonalInfo"} style={navButtonStyle}> 
+              Create resume
+          </Link>
         </button>
+      </div>
         <div
           style={{
             backgroundColor: "rgba(0, 31, 63, 0.8)",

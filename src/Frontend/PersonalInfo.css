@@ -1,0 +1,71 @@
+
+  
+  .PersonalInfo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+  }
+  
+  .PersonalInfo-box {
+    background-color: #1E1E2F;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    height: 600px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+  }
+  
+ 
+  
+  
+  .input-field1{
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #2A2D3E;
+    color: white;
+  }
+  
+  .input-field1::placeholder {
+    color: #888;
+  }
+  
+  
+  
+  .save-button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #3B82F6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+    .next {
+        padding: 0.75rem ; 
+        margin: 0; 
+        border: none;
+        border-radius: 5px;
+        background-color: #3B82F6; 
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute; 
+        top: 30px; 
+        right: 50px; 
+        display: flex; 
+       
+    }
+  
+  
+ 
+   
