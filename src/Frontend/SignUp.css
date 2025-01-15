@@ -74,15 +74,9 @@
     color: #888;
   }
   
-  .forgot-password {
-    display: block;
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    color: #5a8dee;
-    text-decoration: none;
-  }
+
   
-  .sign-in-button {
+  .submit-button {
     width: 100%;
     padding: 0.75rem;
     margin-top: 1rem;
@@ -94,13 +88,5 @@
     cursor: pointer;
   }
   
-  .signup-link {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-  }
   
-  .signup-link a {
-    color: #5a8dee;
-    text-decoration: none;
-  }
    

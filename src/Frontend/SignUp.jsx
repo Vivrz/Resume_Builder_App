@@ -35,11 +35,11 @@ const SignUpPage = () => {
           <input type="password" placeholder="Your password" className="input-field" />
           <input type="password" placeholder=" Confirm Your password" className="input-field" />
           
-          <button type="submit" className="sign-in-button">
+          <button type="submit" className="submit-button">
             Submit
           </button>
         </form>
-
+          
         
       </div>
     </div>
