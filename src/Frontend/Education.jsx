@@ -65,6 +65,7 @@
 import React from "react";
 import "./Education.css";
 import { useNavigate } from "react-router-dom";
+import "./Professional_Exp.jsx";
 
 const Education = () => {
     const navigate = useNavigate();
@@ -103,6 +104,9 @@ const Education = () => {
                    
                     <button type="button" className="next" onClick={handleNext}>
                         Next {'->'}
+                    </button>
+                    <button type="button" className="Prev" onClick={handlePrev}>
+                        Prev {'<-'}
                     </button>
                 </div>
             </div>
