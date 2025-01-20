@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./Skills.css";
 import { useNavigate } from "react-router-dom";
+import "./Education.jsx";
 
 const Skills = () => {
     const navigate = useNavigate();
+    const handlenext = () => {
+        navigate('/#');
+    };
+
     const handlePrev = () => {
         navigate('/Education');
-    }
+    };
     const [skills, setSkills] = useState([""]);
 
     const handleAddSkill = () => {
@@ -69,9 +74,13 @@ const Skills = () => {
                     Save & Done
                 </button>
 
-                    <button type="button" className="next">
+                    <button type="button" className="next" onClick={handlenext}>
                         Next {'->'}
                     </button>
+                    <button type="button" className="Prev" onClick={handlePrev}>
+                        Prev {'<-'}
+                    </button>
+
 
             </div>
         </div>

@@ -8,6 +8,9 @@ const PersonalInfo = () => {
   const handleNext = () => {
     navigate("/Professional_Exp"); 
   };
+  const handlePrev = () => {
+    navigate("/#"); 
+  };
 
   return (
     <div
@@ -49,6 +52,9 @@ const PersonalInfo = () => {
         </form>
         <button type="button" className="next" onClick={handleNext}>
           Next {'->'}
+        </button>
+        <button type="button" className="prev" onClick={handlePrev}>
+          Back to DashBoard {'<-'}
         </button>
       </div>
     </div>

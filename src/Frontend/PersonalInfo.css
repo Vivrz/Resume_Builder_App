@@ -65,6 +65,21 @@
         display: flex; 
        
     }
+    .prev {
+      padding: 0.75rem ; 
+      margin: 0; 
+      border: none;
+      border-radius: 5px;
+      background-color: #3B82F6; 
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute; 
+      top: 30px; 
+      left: 50px; 
+      display: flex; 
+     
+  }
   
   
  

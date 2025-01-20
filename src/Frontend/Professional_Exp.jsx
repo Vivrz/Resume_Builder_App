@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Professional_Info.css";
+import "./PersonalInfo.jsx";
 
 
 const Professional_Exp = () => {
@@ -8,6 +9,9 @@ const Professional_Exp = () => {
 
   const handleNext = () => {
     navigate("/Education"); 
+  };
+  const handlePrev = () => {
+    navigate("/PersonalInfo"); 
   };
 
   return (
@@ -47,6 +51,9 @@ const Professional_Exp = () => {
         </form>
         <button type="button" className="next" onClick={handleNext}>
           Next {'->'}
+        </button>
+        <button type="button" className="Prev" onClick={handlePrev}>
+          Prev {'<-'}
         </button>
       </div>
     </div>
