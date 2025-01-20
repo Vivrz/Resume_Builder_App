@@ -8,7 +8,7 @@ import PersonalInfo from './Frontend/PersonalInfo';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Professional_Exp from './Frontend/Professional_Exp'; 
 import Education from './Frontend/Education';
-
+import AboutUs from './Frontend/AboutUs'
 import Skills from './Frontend/Skills';
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
          <Route path='/Professional_Exp' element={<Professional_Exp/>} />
          <Route path='/Education' element={<Education/>} />
          <Route path='/Skills' element={<Skills/>} />
+         <Route path='/AboutUs' element={<AboutUs/>} />
        </Routes>
      </Router>
    
@@ -28,4 +29,3 @@ function App() {
 }
 
 export default App;
-

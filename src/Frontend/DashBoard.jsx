@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const handleClick = () =>{
+    navigate('/AboutUs');
+  }
   return (
     <div style={{ margin: 0, padding: 0, fontFamily: "Arial, sans-serif" }}>
-      {/* NavBar ka style section */}
+
       <div
         style={{
           display: "flex",
@@ -17,7 +21,7 @@ const Dashboard = () => {
       >
         <div style={{ display: "flex", gap: "15px" }}>
           <button style={navButtonStyle}>Home</button>
-          <button style={navButtonStyle}>About us</button>
+          <button style={navButtonStyle} onClick={handleClick}>About us</button>
         </div>
         <Link to="/Login" style={navButtonStyle}>
           Login
