@@ -6,9 +6,11 @@ const Dashboard = () => {
   const handleClick = () =>{
     navigate('/AboutUs');
   }
+  const handlebutton = ()=>{
+    navigate('/Login');
+  }
   return (
     <div style={{ margin: 0, padding: 0, fontFamily: "Arial, sans-serif" }}>
-
       <div
         style={{
           display: "flex",
@@ -23,15 +25,10 @@ const Dashboard = () => {
           <button style={navButtonStyle}>Home</button>
           <button style={navButtonStyle} onClick={handleClick}>About us</button>
         </div>
-        <Link to="/Login" style={navButtonStyle}>
-          Login
-        </Link>
-
+        <button onClick={handlebutton} style={navButtonStyle}>Login</button>
       </div>
-
       
       <div
-      
         style={{
           background: "linear-gradient(to bottom, #001f3f, #111111)",
           height: "100vh",
@@ -43,36 +40,29 @@ const Dashboard = () => {
           textAlign: "center",
         }}
       > 
-      
-      <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
+        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
           BEST FREE AI RESUME BUILDER
         </h1>
-        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
-         
-
-        </h1>
-        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
-       
-       
-        </h1>
-      <div> 
-        <button
-          style={{
-            padding: "15px 30px",
-            backgroundColor: "#003f7f",
-            border: "none",
-            borderRadius: "5px",
-            color: "white",
-            fontSize: "1rem",
-            cursor: "pointer",
-            marginBottom: "30px",
-          }}
-        >
-          <Link to={"/PersonalInfo"} style={navButtonStyle}> 
+        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}></h1>
+        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}></h1>
+        <div> 
+          <button
+            style={{
+              padding: "15px 30px",
+              backgroundColor: "#003f7f",
+              border: "none",
+              borderRadius: "5px",
+              color: "white",
+              fontSize: "1rem",
+              cursor: "pointer",
+              marginBottom: "30px",
+            }}
+          >
+            <Link to={"/PersonalInfo"} style={navButtonStyle}> 
               Create resume
-          </Link>
-        </button>
-      </div>
+            </Link>
+          </button>
+        </div>
         <div
           style={{
             backgroundColor: "rgba(0, 31, 63, 0.8)",
@@ -92,7 +82,6 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
-    
   );
 };
 
