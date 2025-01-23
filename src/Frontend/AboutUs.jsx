@@ -3,31 +3,28 @@ import "./AboutUs.css";
 const teamMembers = [
   {
     name: "Avdhesh upadhyay",
-    role: "Frontend Developer",
-    description: "Passionate about crafting intuitive user interfaces and enhancing user experience.",
-    image: "vivek.jpg", // Replace with the actual path to Vivek's profile picture
-  },
-  {
-    name: "vivek singh",
-    role: "Backend Developer",
-    description: "Loves working on server-side logic and optimizing database performance.",
-    image: "anjali.jpg", // Replace with the actual path to Anjali's profile picture
-  },
-  {
-    name: "Shreshta Vashistha",
-    role: "AI Specialist",
-    description: "Specializes in integrating AI models and building intelligent solutions.",
-    image: "rahul.jpg", // Replace with the actual path to Rahul's profile picture
+    image: "https://avatars.githubusercontent.com/u/142656855?v=4",
   },
   {
     name: "Anurag Pareek",
-    role: "UI/UX Designer",
-    description: "Focuses on creating visually appealing and user-friendly designs.",
-    image: "priya.jpg", // Replace with the actual path to Priya's profile picture
+    image: "https://avatars.githubusercontent.com/u/111258454?v=4", 
+  },
+  {
+    name: "Shreshta Vashistha",
+    github : "https://github.com/Shreshtha2003",
+    image : "https://avatars.githubusercontent.com/u/132035889?v=4"
+  },
+  {
+    name: "Vivek singh",
+    image: "https://avatars.githubusercontent.com/u/163974647?v=4",
+    github : "https://github.com/Vivrz"
   },
 ];
 
 const AboutUs = () => {
+  const handleclick = (member) => {
+    window.location.href = member.github;
+  }
   return (
     <div className="about-us-section">
       <h2>About Us</h2>
@@ -42,10 +39,9 @@ const AboutUs = () => {
               src={member.image}
               alt={`${member.name}'s profile`}
               className="team-member-img"
+              onClick={() => handleclick(member)}
             />
             <h3>{member.name}</h3>
-            <p className="role">{member.role}</p>
-            <p className="description">{member.description}</p>
           </div>
         ))}
       </div>
