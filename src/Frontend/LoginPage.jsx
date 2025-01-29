@@ -30,8 +30,7 @@ const LoginPage = () => {
         setError(response.data.message);
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      setError("An error occurred during login. Please try again.");
+      setError("Wrong e-mail or password. Please try again.");
     }
   };
 

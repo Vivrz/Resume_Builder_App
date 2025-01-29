@@ -28,7 +28,7 @@ const SignUpPage = () => {
       if (response.data.success) {
 
         if (password != confirmpassword) {
-          setError("password do not match");
+          setError("Password do not match, Please try again");
           return
         }
 
