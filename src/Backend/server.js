@@ -12,9 +12,9 @@ const app = express();
 require('dotenv').config();
 
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(express.json());
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 
 app.post("/Signup", signupValidation, async (req, res) => {
     try {
-        const { name, password, email} = req.body;
+        const { name, password, email } = req.body;
         const user = await User.findOne({ email });
         if (user) {
             return res.status(409).json({ message: "User already exists, you can login", success: false });
