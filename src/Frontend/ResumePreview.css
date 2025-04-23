@@ -1,0 +1,49 @@
+/* ResumePreview.css */
+
+.resume-preview-wrapper {
+    background-color: #121829;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .resume-container {
+    width: 100%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .resume-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .resume-buttons button {
+    padding: 10px 20px;
+    background-color: #10B981;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .resume-buttons button:hover {
+    background-color: #0f9d75;
+  }
+  
+  .loading-text {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  

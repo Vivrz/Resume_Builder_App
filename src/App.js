@@ -10,6 +10,7 @@ import Professional_Exp from './Frontend/Professional_Exp';
 import Education from './Frontend/Education';
 import AboutUs from './Frontend/AboutUs'
 import Skills from './Frontend/Skills';
+import ResumePreview from "./Frontend/ResumePreview";
 function App() {
   return (
      <Router>
@@ -22,6 +23,7 @@ function App() {
          <Route path='/Education' element={<Education/>} />
          <Route path='/Skills' element={<Skills/>} />
          <Route path='/AboutUs' element={<AboutUs/>} />
+         <Route path="/Preview" element={<ResumePreview />} />
        </Routes>
      </Router>
    

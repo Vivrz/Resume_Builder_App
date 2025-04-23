@@ -1,14 +1,14 @@
-
 import React, { useState } from "react";
 import axios from "axios";
-import "./LoginPage.css"; 
-import { Link, Navigate, useNavigate } from "react-router-dom";
-
+import "./LoginPage.css";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, provider } from "./firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,8 +23,9 @@ const LoginPage = () => {
       const response = await axios.post("http://localhost:5000/Login", loginData);
 
       if (response.data.success) {
-        alert(response.data.message); 
-        localStorage.setItem("token", response.data.jwtoken); 
+        alert(response.data.message);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("name", response.data.name);
         navigate("/");
       } else {
         setError(response.data.message);
@@ -33,6 +34,26 @@ const LoginPage = () => {
       setError("Wrong e-mail or password. Please try again.");
     }
   };
+
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+
+      localStorage.setItem("loggedInUser", user.displayName);
+
+
+      const token = await user.getIdToken();
+      localStorage.setItem("token", token);
+
+      setTimeout(() => navigate("/"), 1000);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
 
   return (
     <div
@@ -53,9 +74,16 @@ const LoginPage = () => {
         <h2 className="welcome-text">Welcome to My SHIVAY AI Resume Builder</h2>
 
         <div className="social-login">
-          <button className="social-button linkedin">Linkedin</button>
-          <button className="social-button google">GOOGLE</button>
+          <button onClick={handleGoogleSignIn} className="google-button">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png"
+              alt="Google icon"
+              className="google-icon"
+            />
+            Sign in with Google
+          </button>
         </div>
+
 
         <div className="divider">
           <span>OR</span>
@@ -84,7 +112,7 @@ const LoginPage = () => {
           </button>
         </form>
 
-        {error && <p className="error-message">{error}</p>} {/* Show error message */}
+        {error && <p className="error-message">{error}</p>}
 
         <div className="signup-link">
           Don't have an account? <Link to="/SignUp">Sign Up</Link>

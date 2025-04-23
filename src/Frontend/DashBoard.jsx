@@ -1,14 +1,54 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import { useNavigate , useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const handleClick = () =>{
-    navigate('/AboutUs');
-  }
-  const handlebutton = ()=>{
-    navigate('/Login');
-  }
+  const location = useLocation();
+  const [userName, setUserName] = useState("");
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const name = localStorage.getItem("name");
+    const googleName = localStorage.getItem("loggedInUser");
+  
+    if (token && (name || googleName)) {
+      setUserName(name || googleName);
+    } else {
+      setUserName("");
+    }
+  }, [location]);
+  
+
+  const handleClick = () => {
+    navigate("/AboutUs");
+  };
+
+  const handleLogin = () => {
+    navigate("/Login");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("loggedInUser");
+    alert("User Logout successfully");
+    setUserName("");
+    navigate("/");
+  };
+  
+
+  const handleCreateResume = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/PersonalInfo");
+      console.log("All gud");
+    } else {
+      navigate("/Login");
+    }
+  };
+
   return (
     <div style={{ margin: 0, padding: 0, fontFamily: "Arial, sans-serif" }}>
       <div
@@ -23,11 +63,27 @@ const Dashboard = () => {
       >
         <div style={{ display: "flex", gap: "15px" }}>
           <button style={navButtonStyle}>Home</button>
-          <button style={navButtonStyle} onClick={handleClick}>About us</button>
+          <button style={navButtonStyle} onClick={handleClick}>
+            About us
+          </button>
         </div>
-        <button onClick={handlebutton} style={navButtonStyle}>Login</button>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {userName ? (
+            <>
+              <span style={navButtonStyle}>{userName}</span>
+              <button style={navButtonStyle} onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <button onClick={handleLogin} style={navButtonStyle}>
+              Login
+            </button>
+          )}
+        </div>
       </div>
-      
+
       <div
         style={{
           background: "linear-gradient(to bottom, #001f3f, #111111)",
@@ -39,13 +95,11 @@ const Dashboard = () => {
           color: "white",
           textAlign: "center",
         }}
-      > 
-        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}>
+      >
+        <h1 style={{ fontSize: "3rem", marginTop: "0px" }}>
           BEST FREE AI RESUME BUILDER
         </h1>
-        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}></h1>
-        <h1 style={{ fontSize: "3rem", marginTop:"0px" }}></h1>
-        <div> 
+        <div>
           <button
             style={{
               padding: "15px 30px",
@@ -57,10 +111,9 @@ const Dashboard = () => {
               cursor: "pointer",
               marginBottom: "30px",
             }}
+            onClick={handleCreateResume}
           >
-            <Link to={"/PersonalInfo"} style={navButtonStyle}> 
-              Create resume
-            </Link>
+            Create resume
           </button>
         </div>
         <div
@@ -71,13 +124,13 @@ const Dashboard = () => {
             borderRadius: "10px",
             width: "80%",
             maxWidth: "600px",
-            marginTop:"40px"
+            marginTop: "40px",
           }}
         >
           <p style={{ fontSize: "1.2rem", lineHeight: "1.8" }}>
             Our smart AI will automate every step of resume making: write the
-            whole resume, edit and optimize your existing one, and make sure
-            the formatting is Perfect.
+            whole resume, edit and optimize your existing one, and make sure the
+            formatting is Perfect.
           </p>
         </div>
       </div>
@@ -85,7 +138,6 @@ const Dashboard = () => {
   );
 };
 
-// Button kaa style section
 const navButtonStyle = {
   padding: "10px 15px",
   backgroundColor: "#003f7f",

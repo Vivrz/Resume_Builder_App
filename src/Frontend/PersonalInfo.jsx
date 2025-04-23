@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useResume } from "./ResumeContext";
 import "./PersonalInfo.css";
 
 const PersonalInfo = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const { updateSection } = useResume();
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    contact: "",
+    email: "",
+    address: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    updateSection("personalInfo", formData);
+    console.log("Saved personal info:", formData);
+  };
 
   const handleNext = () => {
-    navigate("/Professional_Exp"); 
+    navigate("/Professional_Exp");
   };
+
   const handlePrev = () => {
-    navigate("/#"); 
+    navigate("/");
   };
 
   return (
@@ -32,29 +57,61 @@ const PersonalInfo = () => {
           <h2>Get Started with the personal information</h2>
         </div>
 
-        <form>
-          <input type="text" placeholder="First name" className="input-field1" />
-          <input type="text" placeholder="Last name" className="input-field1" />
+        <form onSubmit={handleSave}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            className="input-field1"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last name"
+            className="input-field1"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
           <input
             type="tel"
+            name="contact"
             pattern="[0-9]+"
-            title="Please enter a valid positive number"
+            title="Please enter a valid number"
             required
             placeholder="Contact Number"
             className="input-field1"
+            value={formData.contact}
+            onChange={handleChange}
           />
-          <input type="email" placeholder="Your email" className="input-field1" />
-          <input type="text" placeholder="Address" className="input-field1" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            className="input-field1"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            className="input-field1"
+            value={formData.address}
+            onChange={handleChange}
+          />
 
           <button type="submit" className="save-button">
             Save
           </button>
         </form>
+
         <button type="button" className="next" onClick={handleNext}>
-          Next {'->'}
+          Next {"->"}
         </button>
         <button type="button" className="prev" onClick={handlePrev}>
-          Back to DashBoard {'<-'}
+          Back to Dashboard {"<-"}
         </button>
       </div>
     </div>

@@ -14,27 +14,24 @@ const SignUpPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (password !== confirmpassword) {
+      setError("Passwords do not match. Please try again.");
+      return;
+    }
+  
     const userData = {
       name,
       email,
       password,
     };
-
+  
     try {
-
       const response = await axios.post("http://localhost:5000/Signup", userData);
-
+  
       if (response.data.success) {
-
-        if (password != confirmpassword) {
-          setError("Password do not match, Please try again");
-          return
-        }
-
         alert(response.data.message);
       } else {
-
         setError(response.data.message);
       }
     } catch (error) {
@@ -42,6 +39,7 @@ const SignUpPage = () => {
       setError("An error occurred while signing up. Please try again.");
     }
   };
+  
 
   return (
     <div
@@ -59,15 +57,6 @@ const SignUpPage = () => {
     >
       <div className="sign-box">
         <h1 className="logo">SHIVAY</h1>
-
-        <div className="social-login">
-          <button className="social-button linkedin">Linkedin</button>
-          <button className="social-button google">GOOGLE</button>
-        </div>
-
-        <div className="divider">
-          <span>OR</span>
-        </div>
 
         <form onSubmit={handleSubmit}>
           <input
