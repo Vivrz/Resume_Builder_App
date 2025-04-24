@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { useNavigate , useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -12,14 +12,14 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     const name = localStorage.getItem("name");
     const googleName = localStorage.getItem("loggedInUser");
-  
+
     if (token && (name || googleName)) {
       setUserName(name || googleName);
     } else {
       setUserName("");
     }
   }, [location]);
-  
+
 
   const handleClick = () => {
     navigate("/AboutUs");
@@ -37,7 +37,11 @@ const Dashboard = () => {
     setUserName("");
     navigate("/");
   };
-  
+
+  const handleAI = () => {
+    alert("Will Be Released Soon ....");
+  }
+
 
   const handleCreateResume = () => {
     const token = localStorage.getItem("token");
@@ -62,11 +66,23 @@ const Dashboard = () => {
         }}
       >
         <div style={{ display: "flex", gap: "15px" }}>
+
           <button style={navButtonStyle}>Home</button>
+
           <button style={navButtonStyle} onClick={handleClick}>
             About us
           </button>
+
+          {
+            userName && (
+              <button style={navButtonStyle} onClick={handleAI}>
+                AI Assistant
+              </button>
+            )
+          }
         </div>
+
+
 
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           {userName ? (
@@ -128,8 +144,8 @@ const Dashboard = () => {
           }}
         >
           <p style={{ fontSize: "1.2rem", lineHeight: "1.8" }}>
-          Create, edit, and format effortlessly.
-          🔜 AI features launching soon — watch this space!
+            Create, edit, and format effortlessly.
+            🔜 AI features launching soon — watch this space!
           </p>
         </div>
       </div>
