@@ -1,15 +1,21 @@
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Skills.css";
 import { useNavigate } from "react-router-dom";
 import { useResume } from "./ResumeContext";
+import SplitLayout from "./SplitLayout";
 
 const Skills = () => {
   const navigate = useNavigate();
-  const { updateSection } = useResume();
+  const { resumeData, updateSection } = useResume();
 
   const [skills, setSkills] = useState([""]);
+
+  // Load existing skills if available
+  useEffect(() => {
+    if (resumeData.skills && resumeData.skills.length > 0) {
+      setSkills(resumeData.skills);
+    }
+  }, []);
 
   const handleAddSkill = () => {
     setSkills([...skills, ""]);
@@ -29,27 +35,25 @@ const Skills = () => {
   const handleSave = () => {
     const cleanedSkills = skills.filter(skill => skill.trim() !== "");
     updateSection("skills", cleanedSkills);
+  };
+
+  const handleNext = () => {
+    handleSave();
     navigate("/Preview"); 
   };
 
   const handlePrev = () => {
+    handleSave();
     navigate("/Education");
   };
 
   return (
-    <div className="Skills-container">
-      <div className="Skills-box">
-        <h1>Skills</h1>
-        <h2>Add your skills information</h2>
-
+    <SplitLayout title="Skills" subtitle="Add your skills information">
+      <div className="skills-form">
         {skills.map((skill, index) => (
           <div
             key={index}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "0.5rem",
-            }}
+            className="skill-input-group"
           >
             <input
               type="text"
@@ -62,18 +66,6 @@ const Skills = () => {
               type="button"
               className="remove-skill-button"
               onClick={() => handleRemoveSkill(index)}
-              style={{
-                borderRadius: "50%",
-                backgroundColor: "#3B82F6",
-                color: "white",
-                border: "none",
-                width: "30px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
             >
               &#x2716;
             </button>
@@ -89,17 +81,19 @@ const Skills = () => {
         </button>
 
         <button type="button" className="save-button" onClick={handleSave}>
-          Save & Done
+          Save
         </button>
 
-        <button type="button" className="next" onClick={handleSave}>
-          Next {"->"}
-        </button>
-        <button type="button" className="Prev" onClick={handlePrev}>
-          Prev {"<-"}
-        </button>
+        <div className="navigation-buttons">
+          <button type="button" className="prev-button" onClick={handlePrev}>
+            Previous {"<-"}
+          </button>
+          <button type="button" className="next-button" onClick={handleNext}>
+            Next {"->"}
+          </button>
+        </div>
       </div>
-    </div>
+    </SplitLayout>
   );
 };
 

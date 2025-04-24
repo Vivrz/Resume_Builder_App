@@ -1,49 +1,104 @@
 /* ResumePreview.css */
 
+.resume-preview-page {
+  background-color: #121829;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.preview-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.preview-header p {
+  color: #aaa;
+  max-width: 600px;
+}
+
 .resume-preview-wrapper {
-    background-color: #121829;
-    min-height: 100vh;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.resume-container {
+  max-width: 100%;
+  margin-bottom: 2rem;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.resume-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.download-button, .print-button, .back-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.download-button {
+  background-color: #3B82F6;
+  color: white;
+}
+
+.print-button {
+  background-color: #10B981;
+  color: white;
+}
+
+.back-button {
+  background-color: #6B7280;
+  color: white;
+}
+
+.download-button:hover, .print-button:hover, .back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
   .resume-container {
-    width: 100%;
-    max-width: 900px;
-    background-color: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-container {
+    transform: scale(0.8);
   }
   
   .resume-buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
   }
   
-  .resume-buttons button {
-    padding: 10px 20px;
-    background-color: #10B981;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+  .download-button, .print-button, .back-button {
+    width: 100%;
   }
-  
-  .resume-buttons button:hover {
-    background-color: #0f9d75;
-  }
-  
-  .loading-text {
-    color: white;
-    text-align: center;
-    font-size: 1.2rem;
-  }
+}
   
