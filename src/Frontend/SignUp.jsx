@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 const SignUpPage = () => {
-
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +31,7 @@ const SignUpPage = () => {
   
       if (response.data.success) {
         alert(response.data.message);
+        navigate('/Login');
       } else {
         setError(response.data.message);
       }

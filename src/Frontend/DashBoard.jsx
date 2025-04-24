@@ -128,9 +128,8 @@ const Dashboard = () => {
           }}
         >
           <p style={{ fontSize: "1.2rem", lineHeight: "1.8" }}>
-            Our smart AI will automate every step of resume making: write the
-            whole resume, edit and optimize your existing one, and make sure the
-            formatting is Perfect.
+          Create, edit, and format effortlessly.
+          🔜 AI features launching soon — watch this space!
           </p>
         </div>
       </div>

@@ -20,6 +20,12 @@ const ResumePreview = () => {
 
 
   const handleDownloadPDF = async () => {
+    const { education, experience , personalInfo , skills} = resumeData;
+
+  if (!education || education.length === 0 || !experience || experience.length === 0 || !personalInfo || personalInfo.length === 0 ||  !skills || skills.length === 0 ) {
+    alert("Please complete your all details before downloading the resume.");
+    return;
+  }
     const input = resumeRef.current;
     const canvas = await html2canvas(input, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");

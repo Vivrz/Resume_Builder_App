@@ -4,7 +4,7 @@ const ResumeContext = createContext();
 
 export const ResumeProvider = ({ children }) => {
   const [resumeData, setResumeData] = useState({
-    personalInfo: {},
+    personalInfo: [],
     experience: [],
     education: [],
     skills: [],
