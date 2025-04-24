@@ -28,7 +28,7 @@ const AboutUs = () => {
   return (
     <div className="about-us-section">
       <h2>About Us</h2>
-      <p >
+      <p style = {{color : "white"}}>
         We are a team of dedicated individuals working on the Resume Builder project. Our goal is to
         simplify and automate the process of creating professional resumes.
       </p>
