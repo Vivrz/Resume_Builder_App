@@ -10,7 +10,7 @@ const teamMembers = [
     image: "https://avatars.githubusercontent.com/u/111258454?v=4", 
   },
   {
-    name: "Shreshta Vashistha",
+    name: "Shreshtha Vashishtha",
     github : "https://github.com/Shreshtha2003",
     image : "https://avatars.githubusercontent.com/u/132035889?v=4"
   },

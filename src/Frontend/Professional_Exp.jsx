@@ -1,110 +1,99 @@
-// import React from "react";
-// import "./Professional_Info.css";
-// import { Navigate, useNavigate } from "react-router-dom";
-// const Professinal_Exp = () => {
-//     const navigate = useNavigate();
-//     const handleonClick = () => {
-//         navigate('/Education');
-//     }
-//     const handlePrev = () => {
-//         navigate('/PersonalInfo');
-//     };
-//     return (
-//         <div
-//             className="PersonalInfo-container"
-//             style={{
-//                 margin: 0,
-//                 fontFamily: "Arial, sans-serif",
-//                 backgroundColor: "#121829",
-//                 color: "#fff",
-//                 display: "flex",
-//                 justifyContent: "center",
-//                 alignItems: "center",
-//                 height: "100vh",
-//             }}
-//         >
-//             <div className="PersonalInfo-box">
-//                 <div>
-//                     <h1>
-//                         Professional Experience
-//                     </h1>
-//                     <h2>Add previous job experience</h2>
-//                 </div>
-
-//                 <form>
-//                     <input type="text" placeholder="Position title" className="input-field1" />
-//                     <input type="text" placeholder="Company name" className="input-field1" />
-//                     <input type="text" placeholder="City" className="input-field1" />
-//                     <input type="text" placeholder="State" className="input-field1" />
-//                     <input type="text" placeholder="Address" className="input-field1" />
-//                     <label> Start Date :</label>
-//                     <input type="date" placeholder="Start date" className="input-field1" />
-//                     <label> End Date :</label>
-//                     <input type="date" placeholder="End date" className="input-field1" />
-
-//                     <button type="submit" className="save-button">
-//                         Save
-//                     </button>
-//                 </form>
-//                 <button type="button" className="next" onClick={() => {
-//                     handleonClick();
-//                 }}>
-//                     Next {'->'}
-//                 </button>
-//                 <button type="button" className="Prev" onClick={handlePrev}>
-//                     Prev {'<-'}
-//                 </button>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Professinal_Exp;
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Professional_Info.css";
 import { useNavigate } from "react-router-dom";
 import { useResume } from "./ResumeContext";
+import SplitLayout from "./SplitLayout";
 
-const Professinal_Exp = () => {
+const Professional_Exp = () => {
   const navigate = useNavigate();
   const { resumeData, updateSection } = useResume();
 
-  const [formData, setFormData] = useState({
-    positionTitle: "",
-    companyName: "",
+  const [experienceEntries, setExperienceEntries] = useState([]);
+  const [currentFormData, setCurrentFormData] = useState({
+    title: "",
+    company: "",
     city: "",
     state: "",
     address: "",
     startDate: "",
     endDate: "",
   });
+  const [editIndex, setEditIndex] = useState(-1);
+
+  // Load existing experience data if available
+  useEffect(() => {
+    if (resumeData.experience && resumeData.experience.length > 0) {
+      setExperienceEntries(resumeData.experience);
+    }
+  }, []);
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    const { name, value } = e.target;
+    setCurrentFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value
     }));
   };
 
-  const handleSave = (e) => {
+  const handleAddExperience = (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!currentFormData.title || !currentFormData.company) {
+      alert("Please fill in position title and company name fields.");
+      return;
+    }
 
-
-    const updatedExperience = [...resumeData.experience, formData];
-    updateSection("experience", updatedExperience);
-
-
-    setFormData({
-      positionTitle: "",
-      companyName: "",
+    let updatedEntries = [...experienceEntries];
+    
+    if (editIndex >= 0) {
+      // Edit existing entry
+      updatedEntries[editIndex] = currentFormData;
+    } else {
+      // Add new entry
+      updatedEntries.push(currentFormData);
+    }
+    
+    // Update state and context
+    setExperienceEntries(updatedEntries);
+    updateSection("experience", updatedEntries);
+    
+    // Reset form
+    setCurrentFormData({
+      title: "",
+      company: "",
       city: "",
       state: "",
       address: "",
       startDate: "",
       endDate: "",
     });
+    setEditIndex(-1);
+  };
+
+  const handleEdit = (index) => {
+    setCurrentFormData(experienceEntries[index]);
+    setEditIndex(index);
+  };
+
+  const handleDelete = (index) => {
+    const updatedEntries = experienceEntries.filter((_, i) => i !== index);
+    setExperienceEntries(updatedEntries);
+    updateSection("experience", updatedEntries);
+    
+    // Reset form if currently editing this entry
+    if (index === editIndex) {
+      setCurrentFormData({
+        title: "",
+        company: "",
+        city: "",
+        state: "",
+        address: "",
+        startDate: "",
+        endDate: "",
+      });
+      setEditIndex(-1);
+    }
   };
 
   const handleNext = () => {
@@ -116,48 +105,33 @@ const Professinal_Exp = () => {
   };
 
   return (
-    <div
-      className="PersonalInfo-container"
-      style={{
-        margin: 0,
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#121829",
-        color: "#fff",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <div className="PersonalInfo-box">
-        <div>
-          <h1>Professional Experience</h1>
-          <h2>Add previous job experience</h2>
-        </div>
-
-        <form onSubmit={handleSave}>
+    <SplitLayout title="Professional Experience" subtitle="Add previous job experience">
+      <div className="experience-form">
+        <form onSubmit={handleAddExperience}>
           <input
             type="text"
-            name="positionTitle"
+            name="title"
             placeholder="Position title"
             className="input-field1"
-            value={formData.positionTitle}
+            value={currentFormData.title}
             onChange={handleChange}
+            required
           />
           <input
             type="text"
-            name="companyName"
+            name="company"
             placeholder="Company name"
             className="input-field1"
-            value={formData.companyName}
+            value={currentFormData.company}
             onChange={handleChange}
+            required
           />
           <input
             type="text"
             name="city"
             placeholder="City"
             className="input-field1"
-            value={formData.city}
+            value={currentFormData.city}
             onChange={handleChange}
           />
           <input
@@ -165,7 +139,7 @@ const Professinal_Exp = () => {
             name="state"
             placeholder="State"
             className="input-field1"
-            value={formData.state}
+            value={currentFormData.state}
             onChange={handleChange}
           />
           <input
@@ -173,40 +147,65 @@ const Professinal_Exp = () => {
             name="address"
             placeholder="Address"
             className="input-field1"
-            value={formData.address}
+            value={currentFormData.address}
             onChange={handleChange}
           />
-          <label> Start Date :</label>
-          <input
-            type="date"
-            name="startDate"
-            className="input-field1"
-            value={formData.startDate}
-            onChange={handleChange}
-          />
-          <label> End Date :</label>
-          <input
-            type="date"
-            name="endDate"
-            className="input-field1"
-            value={formData.endDate}
-            onChange={handleChange}
-          />
+          <div className="date-field">
+            <label>Start Date:</label>
+            <input
+              type="date"
+              name="startDate"
+              className="input-field1"
+              value={currentFormData.startDate}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="date-field">
+            <label>End Date:</label>
+            <input
+              type="date"
+              name="endDate"
+              className="input-field1"
+              value={currentFormData.endDate}
+              onChange={handleChange}
+            />
+          </div>
 
           <button type="submit" className="save-button">
-            Save
+            {editIndex >= 0 ? "Update" : "Add"} Experience
           </button>
         </form>
 
-        <button type="button" className="next" onClick={handleNext}>
-          Next {"->"}
-        </button>
-        <button type="button" className="Prev" onClick={handlePrev}>
-          Prev {"<-"}
-        </button>
+        {experienceEntries.length > 0 && (
+          <div className="experience-entries">
+            <h3>Your Experience</h3>
+            {experienceEntries.map((entry, index) => (
+              <div key={index} className="experience-entry">
+                <div className="entry-header">
+                  <h4>{entry.title} at {entry.company}</h4>
+                  <div className="entry-actions">
+                    <button onClick={() => handleEdit(index)} className="edit-button">Edit</button>
+                    <button onClick={() => handleDelete(index)} className="delete-button">Delete</button>
+                  </div>
+                </div>
+                <p>{entry.city}, {entry.state}</p>
+                <p>{entry.startDate} - {entry.endDate}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="navigation-buttons">
+          <button type="button" className="prev-button" onClick={handlePrev}>
+            Previous {"<-"}
+          </button>
+          <button type="button" className="next-button" onClick={handleNext}>
+            Next {"->"}
+          </button>
+        </div>
       </div>
-    </div>
+    </SplitLayout>
   );
 };
 
-export default Professinal_Exp;
+export default Professional_Exp;

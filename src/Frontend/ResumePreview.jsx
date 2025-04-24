@@ -1,5 +1,3 @@
-
-
 import React, { useRef } from "react";
 import { useResume } from "./ResumeContext";
 import { useNavigate } from "react-router-dom";
@@ -7,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import ModernTemplate from "./ModernTemplate";
-import  "./ResumePreview.css";
+import "./ResumePreview.css";
 
 const ResumePreview = () => {
-  const navigate = useNavigate();
   const { resumeData, isDataLoaded } = useResume();
   const resumeRef = useRef();
+  const navigate = useNavigate();
 
   const handlePrev = () =>{
     navigate('/');
@@ -38,24 +36,37 @@ const ResumePreview = () => {
     pdf.save("resume.pdf");
   };
 
-  if (isDataLoaded) {
-    return <div className="loading-text">Loading resume data...</div>;
-  }
+  const handleBack = () => {
+    navigate("/Skills"); // Go back to the last form page
+  };
   
   return (
-    <div className="resume-preview-wrapper">
-      <div className="resume-container" ref={resumeRef}>
-        <ModernTemplate data={resumeData} />
+    <div className="resume-preview-page">
+      <div className="preview-header">
+        <h1>Resume Preview</h1>
+        <p>Your resume is ready! You can download it as a PDF or go back to make additional changes.</p>
       </div>
-      <div className="resume-buttons">
-        <button onClick={handleDownloadPDF}>Download as PDF</button>
+      
+      <div className="resume-preview-wrapper">
+        <div className="resume-container" ref={resumeRef}>
+          <ModernTemplate data={resumeData} />
+        </div>
+        
+        <div className="resume-buttons">
+          <button onClick={handleDownloadPDF} className="download-button">
+            Download as PDF
+          </button>
+          
+          <button onClick={handleBack} className="back-button">
+            Go Back
+          </button>
+        </div>
       </div>
       <button type="button" className="Prev" onClick={handlePrev}>
           Home {"<-"}
         </button>
     </div>
   );
-  
 };
 
 export default ResumePreview;
