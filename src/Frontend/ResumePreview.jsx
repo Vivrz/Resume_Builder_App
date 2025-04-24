@@ -52,9 +52,7 @@ const ResumePreview = () => {
           <button onClick={handleDownloadPDF} className="download-button">
             Download as PDF
           </button>
-          <button onClick={handlePrint} className="print-button">
-            Print
-          </button>
+          
           <button onClick={handleBack} className="back-button">
             Go Back
           </button>
