@@ -16,7 +16,6 @@ const PersonalInfo = () => {
     address: "",
   });
 
-  // Load existing data if available
   useEffect(() => {
     if (resumeData.personalInfo) {
       setFormData({
