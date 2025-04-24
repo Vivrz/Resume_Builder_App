@@ -26,7 +26,14 @@ const PersonalInfo = () => {
   const handleSave = (e) => {
     e.preventDefault();
     updateSection("personalInfo", formData);
-    console.log("Saved personal info:", formData);
+    console.log(formData);
+    setFormData({
+      firstName: "",
+    lastName: "",
+    contact: "",
+    email: "",
+    address: ""
+    });
   };
 
   const handleNext = () => {

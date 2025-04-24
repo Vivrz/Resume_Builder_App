@@ -2,22 +2,22 @@
 
 import React, { useRef } from "react";
 import { useResume } from "./ResumeContext";
-import { useReactToPrint } from "react-to-print";
+import { useNavigate } from "react-router-dom";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import ModernTemplate from "./ModernTemplate";
 import  "./ResumePreview.css";
 
 const ResumePreview = () => {
+  const navigate = useNavigate();
   const { resumeData, isDataLoaded } = useResume();
   const resumeRef = useRef();
 
-  const handlePrint = useReactToPrint({
-    content: () => resumeRef.current,
-    documentTitle: "Resume",
-    onAfterPrint: () => console.log("Printing completed."),
-    onBeforePrint: () => console.log("Printing started."),
-  });
+  const handlePrev = () =>{
+    navigate('/');
+  }
+
 
   const handleDownloadPDF = async () => {
     const input = resumeRef.current;
@@ -44,6 +44,9 @@ const ResumePreview = () => {
       <div className="resume-buttons">
         <button onClick={handleDownloadPDF}>Download as PDF</button>
       </div>
+      <button type="button" className="Prev" onClick={handlePrev}>
+          Home {"<-"}
+        </button>
     </div>
   );
   
