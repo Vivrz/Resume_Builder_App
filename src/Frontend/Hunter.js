@@ -1,0 +1,1 @@
+export const base_url = `https://shivay-ai-resume-builder.onrender.com`;

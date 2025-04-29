@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./SignUp.css";
 import { Link , useNavigate } from "react-router-dom";
+import {base_url} from "./Hunter";
+
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -27,7 +29,7 @@ const SignUpPage = () => {
     };
   
     try {
-      const response = await axios.post("http://localhost:5000/Signup", userData);
+      const response = await axios.post(`${base_url}/Signup`, userData);
   
       if (response.data.success) {
         alert(response.data.message);

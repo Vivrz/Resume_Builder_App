@@ -4,7 +4,7 @@ import "./LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "./firebase";
 import { signInWithPopup } from "firebase/auth";
-
+import {base_url} from "./Hunter";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,7 @@ const LoginPage = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/Login", loginData);
+      const response = await axios.post(`${base_url}/Login`, loginData);
 
       if (response.data.success) {
         alert(response.data.message);
