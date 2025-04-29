@@ -6,7 +6,7 @@ import LoginPage from './Frontend/LoginPage';
 import SignUpPage from './Frontend/SignUp';
 import PersonalInfo from './Frontend/PersonalInfo';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Professional_Exp from './Frontend/Professional_Exp'; 
+import Professional_Exp from './Frontend/ProfessionalExp'; 
 import Education from './Frontend/Education';
 import AboutUs from './Frontend/AboutUs'
 import Skills from './Frontend/Skills';
