@@ -104,9 +104,13 @@ const LoginPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <a href="#" className="forgot-password">
+          <button
+            type="button"
+            className="forgot-password"
+            onClick={() => alert("Forgot password functionality not implemented yet.")}
+          >
             Forgot your password?
-          </a>
+          </button>
           <button type="submit" className="sign-in-button">
             SIGN IN
           </button>

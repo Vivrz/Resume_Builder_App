@@ -25,7 +25,7 @@ const Professional_Exp = () => {
     if (resumeData.experience && resumeData.experience.length > 0) {
       setExperienceEntries(resumeData.experience);
     }
-  }, []);
+  }, [resumeData.experience]); // Include resumeData.experience in the dependency array
 
   const handleChange = (e) => {
     const { name, value } = e.target;

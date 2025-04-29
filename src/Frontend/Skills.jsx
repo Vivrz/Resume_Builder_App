@@ -15,7 +15,7 @@ const Skills = () => {
     if (resumeData.skills && resumeData.skills.length > 0) {
       setSkills(resumeData.skills);
     }
-  }, []);
+  }, [resumeData.skills]);
 
   const handleAddSkill = () => {
     setSkills([...skills, ""]);

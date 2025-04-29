@@ -8,22 +8,21 @@ import ModernTemplate from "./ModernTemplate";
 import "./ResumePreview.css";
 
 const ResumePreview = () => {
-  const { resumeData, isDataLoaded } = useResume();
+  const { resumeData } = useResume(); // Removed isDataLoaded as it is unused
   const resumeRef = useRef();
   const navigate = useNavigate();
 
-  const handlePrev = () =>{
+  const handlePrev = () => {
     navigate('/');
-  }
-
+  };
 
   const handleDownloadPDF = async () => {
-    const { education, experience , personalInfo , skills} = resumeData;
+    const { education, experience, personalInfo, skills } = resumeData;
 
-  if (!education || education.length === 0 || !experience || experience.length === 0 || !personalInfo || personalInfo.length === 0 ||  !skills || skills.length === 0 ) {
-    alert("Please complete your all details before downloading the resume.");
-    return;
-  }
+    if (!education || education.length === 0 || !experience || experience.length === 0 || !personalInfo || personalInfo.length === 0 || !skills || skills.length === 0) {
+      alert("Please complete your all details before downloading the resume.");
+      return;
+    }
     const input = resumeRef.current;
     const canvas = await html2canvas(input, { scale: 2 });
     const imgData = canvas.toDataURL("image/png");
@@ -39,7 +38,7 @@ const ResumePreview = () => {
   const handleBack = () => {
     navigate("/Skills"); // Go back to the last form page
   };
-  
+
   return (
     <div className="resume-preview-page">
       <div className="preview-header">

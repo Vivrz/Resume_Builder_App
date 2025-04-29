@@ -18,12 +18,12 @@ const PersonalInfo = () => {
 
   useEffect(() => {
     if (resumeData.personalInfo) {
-      setFormData({
-        ...formData,
-        ...resumeData.personalInfo
-      });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        ...resumeData.personalInfo,
+      }));
     }
-  }, []);
+  }, [resumeData.personalInfo]); // Include resumeData.personalInfo in the dependency array
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,10 +39,10 @@ const PersonalInfo = () => {
     console.log(formData);
     setFormData({
       firstName: "",
-    lastName: "",
-    contact: "",
-    email: "",
-    address: ""
+      lastName: "",
+      contact: "",
+      email: "",
+      address: "",
     });
   };
 
