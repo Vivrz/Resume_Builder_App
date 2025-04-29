@@ -52,5 +52,14 @@
   "description": "<<<<<<< HEAD\r # Getting Started with Create React App",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  
+  "eslintConfig": {
+  "rules": {
+    "react/jsx-pascal-case": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-unused-vars": "warn"
+  }
+}
 }
