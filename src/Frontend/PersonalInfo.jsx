@@ -23,7 +23,7 @@ const PersonalInfo = () => {
         ...resumeData.personalInfo,
       }));
     }
-  }, [resumeData.personalInfo]); // Include resumeData.personalInfo in the dependency array
+  }, [resumeData.personalInfo, setFormData]); // Added 'setFormData' to the dependency array
 
   const handleChange = (e) => {
     const { name, value } = e.target;

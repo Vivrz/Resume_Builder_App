@@ -15,7 +15,7 @@ const Skills = () => {
     if (resumeData.skills && resumeData.skills.length > 0) {
       setSkills(resumeData.skills);
     }
-  }, [resumeData.skills]);
+  }, [resumeData.skills]); // Added 'resumeData.skills' to the dependency array
 
   const handleAddSkill = () => {
     setSkills([...skills, ""]);
