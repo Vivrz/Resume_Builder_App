@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useResume } from "./ResumeContext";
 import SplitLayout from "./SplitLayout";
 
-const Professional_Exp = () => {
+const ProfessionalExp = () => {
   const navigate = useNavigate();
   const { resumeData, updateSection } = useResume();
 
@@ -208,4 +208,4 @@ const Professional_Exp = () => {
   );
 };
 
-export default Professional_Exp;
+export default ProfessionalExp;

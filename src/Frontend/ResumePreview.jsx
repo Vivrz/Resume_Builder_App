@@ -8,7 +8,7 @@ import ModernTemplate from "./ModernTemplate";
 import "./ResumePreview.css";
 
 const ResumePreview = () => {
-  const { resumeData } = useResume(); // Removed isDataLoaded as it is unused
+  const { resumeData } = useResume(); 
   const resumeRef = useRef();
   const navigate = useNavigate();
 
