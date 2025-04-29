@@ -20,7 +20,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-to-print": "^3.0.6",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
@@ -32,10 +32,12 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "rules": {
+      "react/jsx-pascal-case": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-unused-vars": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -53,13 +55,12 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  
-  "eslintConfig": {
-  "rules": {
-    "react/jsx-pascal-case": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "react-hooks/exhaustive-deps": "warn",
-    "no-unused-vars": "warn"
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.26.6",
+    "@babel/plugin-transform-numeric-separator": "^7.25.9",
+    "@babel/plugin-transform-optional-chaining": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9"
   }
-}
 }
