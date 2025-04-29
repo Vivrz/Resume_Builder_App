@@ -47,7 +47,7 @@ const PersonalInfo = () => {
   };
 
   const handleNext = () => {
-    navigate("/Professional_Exp");
+    navigate("/ProfessionalExp");
   };
 
   const handlePrev = () => {

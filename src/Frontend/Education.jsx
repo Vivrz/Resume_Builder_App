@@ -87,7 +87,7 @@ const Education = () => {
   };
 
   const handlePrev = () => {
-    navigate("/Professional_Exp");
+    navigate("/ProfessionalExp");
   };
 
   return (
